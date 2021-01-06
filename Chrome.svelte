@@ -283,7 +283,7 @@
           </div>
           <div class="input-wrap">
             <input class="rgba"
-              id='blue-input
+              id='blue-input'
               type="text"
               value={b}
               maxlength={3}
