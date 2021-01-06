@@ -166,7 +166,7 @@
 
   let fieldsIndex = 0;
 
-  export const setColor = (args) => update(args, false); 
+  export const setColor = (args) => update(args, true); 
 
   const update = (args, dispatch=true) => {
 
