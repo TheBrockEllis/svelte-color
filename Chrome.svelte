@@ -59,16 +59,16 @@
   }
 
   .changer-up {
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     border-left: 0.5em solid transparent;
     border-right: 0.5em solid transparent;
     border-bottom: 0.5em solid #666;
   }
 
   .changer-down {
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     border-left: 0.5em solid transparent;
     border-right: 0.5em solid transparent;
     border-top: 0.5em solid #666;
@@ -105,7 +105,7 @@
   .hsla-wrap > div:not(:first-child){
     margin-left: 0.5em;
   }
-  
+
   .rgba-wrap input,
   .hsla-wrap input{
     width: 100%;
@@ -157,7 +157,7 @@
   export let b = 0;
   export let hex = "#ff0000";
   export let a = 1;
-  
+
   export let color;
   $: color = {r, g, b, h, s, l, v, a, hex};
 
@@ -166,13 +166,18 @@
 
   let fieldsIndex = 0;
 
-  export const setColor = (args) => update(args, true); 
+  export const setColor = (args) => update(args, false);
 
   const update = (args, dispatch=true) => {
 
+    if(args.length < 6) {
+      // Too small a string to trigger an update
+      return;
+    }
+
     // is not enough with color.isValidColor
     const color = getValidColor(args);
-    
+
     if(!color) return;
 
     const format = color.getFormat();
@@ -182,7 +187,7 @@
     const _rgba = color.toRgb();
     const _hsla = color.toHsl();
     const _hsva = color.toHsv();
-    const _hex = `#${color.toHex(true)}`;
+    const _hex = `#${color.toHex()}`;
 
     r = args.r != null ? args.r : _rgba.r;
     g = args.g != null ? args.g : _rgba.g;
@@ -193,8 +198,8 @@
     v = args.v != null ? args.v : _hsva.v;
     a = args.a != null ? args.a : _rgba.a;
     hex = format === "hex" ? args : _hex;
-    
-    dispatch && dispatchInput();
+
+    dispatch && dispatchInput(args);
   }
 
   const updateAlpha = (alpha) => {
@@ -204,8 +209,10 @@
     a = alpha;
     dispatchInput()
   }
-  
-  const dispatchInput = () => dispatch("input", color);
+
+  const dispatchInput = (hex = undefined) => {
+    dispatch("input", hex);
+  }
 
   const onlyChars = (chars) => (event) => chars.indexOf(String.fromCharCode(event.charCode)) === -1 && event.preventDefault();
   const onlyNumbers = onlyChars("0123456789");
@@ -215,13 +222,13 @@
 </script>
 
 <div class="color-picker">
-  
+
   <div class="saturation-value-wrap">
     <SaturationValue {h} {s} {v} on:input={(event) => update({h, s: event.detail.s, v: event.detail.v, a})} />
   </div>
 
   <div class="sliders-and-square">
-    
+
     <div class="square-wrap">
       <ColorSquare color="rgba({r}, {g}, {b}, {a})"/>
     </div>
@@ -240,7 +247,7 @@
   </div>
 
   <div class="inputs-and-changer">
-   
+
     <div class="inputs-wrap">
       {#if fieldsIndex === 0}
         <div class="input-wrap hex-wrap">
@@ -362,10 +369,10 @@
       {/if}
     </div>
 
-    <div class="changer-wrap">
+    <div class="changer-wrap" style='display: none;'>
       <div class="changer-up" on:click={() => fieldsIndex = (fieldsIndex === 0 ? 2 : (fieldsIndex - 1) % 3)}></div>
       <div class="changer-down" on:click={() => fieldsIndex = (fieldsIndex + 1) % 3}></div>
     </div>
   </div>
 
-</div> 
+</div>
