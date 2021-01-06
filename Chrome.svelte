@@ -211,7 +211,7 @@
   }
 
   const dispatchInput = (hex = undefined) => {
-    dispatch("input", hex);
+    dispatch("input", typeof hex === 'string' ? hex : color.hex);
   }
 
   const onlyChars = (chars) => (event) => chars.indexOf(String.fromCharCode(event.charCode)) === -1 && event.preventDefault();
