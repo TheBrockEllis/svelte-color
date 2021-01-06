@@ -182,7 +182,7 @@
     const _rgba = color.toRgb();
     const _hsla = color.toHsl();
     const _hsva = color.toHsv();
-    const _hex = `#${color.toHex()}`;
+    const _hex = `#${color.toHex(true)}`;
 
     r = args.r != null ? args.r : _rgba.r;
     g = args.g != null ? args.g : _rgba.g;
