@@ -164,7 +164,7 @@
   export let startColor = "#ff0000"; // all tinycolor colors
   export let disableAlpha = false;
 
-  let fieldsIndex = 1;
+  let fieldsIndex = 0;
 
   export const setColor = (args) => update(args, false); 
 
