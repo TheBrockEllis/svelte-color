@@ -244,7 +244,8 @@
     <div class="inputs-wrap">
       {#if fieldsIndex === 0}
         <div class="input-wrap hex-wrap">
-          <input 
+          <input
+            id='hex-input'
             class="hex"
             type="text"
             value={hex}
@@ -252,12 +253,13 @@
             on:keypress={onlyChars("#0123456789abcdefABCFDEF")}
             on:input={event => update(event.target.value)}
           />
-          <label>hex</label>
+          <label for='hex-input'>hex</label>
         </div>
       {:else if fieldsIndex === 1}
         <div class="rgba-wrap">
           <div class="input-wrap">
             <input
+              id='red-input'
               class="rgba"
               type="text"
               value={r}
@@ -265,10 +267,11 @@
               on:keypress={onlyNumbers}
               on:input={event => update({r: parseInt(event.target.value), g, b, a})}
             />
-            <label>r</label>
+            <label for='red-input'>r</label>
           </div>
           <div class="input-wrap">
             <input
+              id='green-input'
               class="rgba"
               type="text"
               value={g}
@@ -276,21 +279,23 @@
               on:keypress={onlyNumbers}
               on:input={event => update({r, g: parseInt(event.target.value), b, a})}
             />
-            <label>g</label>
+            <label for='green-input'>g</label>
           </div>
           <div class="input-wrap">
             <input class="rgba"
+              id='blue-input
               type="text"
               value={b}
               maxlength={3}
               on:keypress={onlyNumbers}
               on:input={event => update({r, g, b: parseInt(event.target.value), a})}
             />
-            <label>b</label>
+            <label for='blue-input'>b</label>
           </div>
           {#if !disableAlpha}
             <div class="input-wrap">
               <input
+                id='alpha-input'
                 class="rgba"
                 type="text"
                 value={Math.round(a * 100) / 100}
@@ -298,7 +303,7 @@
                 on:keypress={onlyNumbersAndDot}
                 on:input={event => updateAlpha(parseFloat(event.target.value))}
               />
-              <label>a</label>
+              <label for='alpha-input'>a</label>
             </div>
           {/if}
         </div>
@@ -306,16 +311,18 @@
         <div class="hsla-wrap">
           <div class="input-wrap">
             <input class="hsla"
+              id='h-input'
               value={Math.round(h) % 360}
               type="text"
               maxlength={3}
               on:keypress={onlyNumbers}
               on:input={event => update({h: parseInt(event.target.value), s, l, a})}
             />
-            <label>h</label>
+            <label for='h-input'>h</label>
           </div>
           <div class="input-wrap">
             <input
+              id='s-input'
               class="hsla percent-input"
               value="{Math.round(s * 100)}%"
               type="text"
@@ -323,10 +330,11 @@
               on:keypress={onlyNumbers}
               on:input={event => update({h, s: parseFloat(event.target.value) / 100, l, a})}
             />
-            <label>s</label>
+            <label for='s-input'>s</label>
           </div>
           <div class="input-wrap">
             <input
+              id='l-input'
               class="hsla percent-input"
               value="{Math.round(l * 100)}%"
               type="text"
@@ -334,11 +342,12 @@
               on:keypress={onlyNumbers}
               on:input={event => update({h, s, l: parseFloat(event.target.value) / 100, a})}
             />
-            <label>l</label>
+            <label for='l-input'>l</label>
           </div>
           {#if !disableAlpha}
             <div class="input-wrap">
               <input
+                id='hsla-a-input'
                 class="hsla"
                 value={Math.round(a * 100) / 100}
                 type="text"
@@ -346,7 +355,7 @@
                 on:keypress={onlyNumbersAndDot}
                 on:input={event => updateAlpha(parseFloat(event.target.value))}
               />
-              <label>a</label>
+              <label for='hsla-a-input'>a</label>
             </div>
           {/if}
         </div>
