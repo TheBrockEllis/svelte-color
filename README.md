@@ -1,10 +1,12 @@
 # Svelte Color 
 
-Color pickers for svelte
+## Color picking Svelte 3 component hand-crafted for From Now On
 
-[Live Demo](https://ramiroaisen.github.io/svelte-color/)
-
-![enter image description here](https://ramiroaisen.github.io/svelte-color/chrome.png)
+This component was forked specifically for the use of From Now On due to UI limitations.
+ 
+ - The ability to manually enter a full, 6/7 digit HEX code was too obtuse in the original package.
+ - The HSL/RGBA options were also removed from the UI to make it more streamlined. 
+ - The component will only emit the 7 digit HEX code instead of a nested object with values FNO will never use.
 
 ---
 ### Install
