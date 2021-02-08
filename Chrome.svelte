@@ -199,7 +199,7 @@
     a = args.a != null ? args.a : _rgba.a;
     hex = format === "hex" ? args : _hex;
 
-    dispatch && dispatchInput(args);
+    dispatch && dispatchInput(hex);
   }
 
   const updateAlpha = (alpha) => {
@@ -224,7 +224,7 @@
 <div class="color-picker">
 
   <div class="saturation-value-wrap">
-    <SaturationValue {h} {s} {v} on:input={(event) => update({h, s: event.detail.s, v: event.detail.v, a})} />
+    <SaturationValue {h} {s} {v} on:inputend={(event) => update({h, s: event.detail.s, v: event.detail.v, a}, true)} on:input={(event) => update({h, s: event.detail.s, v: event.detail.v, a}, false)} />
   </div>
 
   <div class="sliders-and-square">
