@@ -78,7 +78,7 @@
   const handleMouseup = () => {
     self.removeEventListener("mousemove", handleMousemove);
     self.removeEventListener("mouseup", handleMouseup);
-    //dispatch("inputend", {s, v});
+    dispatch("inputend", {s, v});
   }
 
   const handlePointerMousedown = (event) => {
