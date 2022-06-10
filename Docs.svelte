@@ -12,7 +12,7 @@
     position: relative;
     color: rgba(0, 0, 0, 0.65);
   }
-  
+
   .docs-bg{
     position: absolute;
     top: 0;
@@ -43,7 +43,7 @@
     min-width: 20em;
     max-width: 100%;
   }
-  
+
   .main-picker{
     margin: 0 auto;
     padding: 3em 1.5em;
@@ -95,15 +95,16 @@
 
 <script>
   import Chrome from "./Chrome.svelte";
-  import Hue from "./Hue.svelte";
-  import Alpha from "./Alpha.svelte";
+  import ChromeSlim from "./ChromeSlim.svelte";
+  // import Hue from "./Hue.svelte";
+  // import Alpha from "./Alpha.svelte";
 
   let r;
   let g;
   let b;
   let h;
   let s;
-  let v; 
+  let v;
   let l;
   let a;
   let hex;
@@ -118,39 +119,26 @@
 <div class="docs">
   <div class="docs-bg" {style}></div>
   <div class="docs-in">
-    
+
     <header class="main">
       <div class="main-text">
-        <h1>Svelte Color</h1>
-        <p>A Collection of Color Pickers for Svelte (and vanilla js)</p>
+        <h1>FNOEX - Svelte Color</h1>
+        <p>A Collection of Color Pickers for Svelte (and vanilla js) hand-modified for FNOEX.</p>
         <p>Inspired by the excelents <a href="http://vue-color.surge.sh/">Vue Color</a> and <a href="https://casesandberg.github.io/react-color/">React Color</a></p>
         <p>Available in <a href="https://www.npmjs.com/package/svelte-color">npm</a> and <a href="https://github.com/ramiroaisen/svelte-color">github</a></p>
         <p><code>npm install svelte-color</code></p>
       </div>
       <div class="main-picker">
-        <Chrome bind:this={chrome} bind:r bind:g bind:b bind:a bind:h bind:s bind:l bind:v bind:hex startColor="#0f0" />
+        <Chrome disableAlpha={true} bind:this={chrome} bind:r bind:g bind:b bind:a bind:h bind:s bind:l bind:v bind:hex startColor="#0f0" />
         <label class="chrome-label">Chrome</label>
       </div>
     </header>
 
-    <seccion class="hue-alpha-wrap">
-
-      <div class="hue-wrap">
-        <div class="hue">
-          <Hue bind:h on:input={() => update({h,s,v,a})} />
-          <label>Hue</label>
-        </div>
-      </div>
-
-      <div class="alpha-wrap">
-        <div class="alpha">
-          <Alpha bind:a color={hex} on:input={() => update({h,s,v,a})} />
-          <label>Alpha</label>
-        </div>
-      </div>
-    </seccion>
-
     <seccion class="api">
+
+      <h2>Slim Variant</h2>
+
+      <ChromeSlim disableAlpha={true} bind:this={chrome} bind:r bind:g bind:b bind:a bind:h bind:s bind:l bind:v bind:hex startColor="#0f0" />
 
       <h2>Usage</h2>
 
@@ -206,9 +194,9 @@
   disableAlpha={false} // default
   on:input={handleInput}
 />
-<!-- 
-  you can also bind 
-  specific props 
+<!--
+  you can also bind
+  specific props
   like bind:r={red} bind:h={hue}
 -->
 `}
