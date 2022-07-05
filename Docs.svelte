@@ -138,7 +138,7 @@
 
       <h2>Slim Variant</h2>
 
-      <ChromeSlim disableAlpha={true} bind:this={chrome} bind:r bind:g bind:b bind:a bind:h bind:s bind:l bind:v bind:hex startColor="#0f0" />
+      <ChromeSlim forcePoundSign="{true}" upcaseOutput="{true}" disableAlpha={true} bind:this={chrome} bind:r bind:g bind:b bind:a bind:h bind:s bind:l bind:v bind:hex startColor="abc123" />
 
       <h2>Usage</h2>
 

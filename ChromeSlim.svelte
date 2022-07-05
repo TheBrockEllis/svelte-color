@@ -185,6 +185,8 @@
 
   export let startColor = "#ff0000"; // all tinycolor colors
   export let disableAlpha = false;
+  export let upcaseOutput = false
+  export let forcePoundSign = false
 
   let fieldsIndex = 0;
 
@@ -199,9 +201,13 @@
 
   const update = (args, dispatch=true) => {
 
-    if(args.length < 6) {
+    if (args.length < 6) {
       // Too small a string to trigger an update
       return;
+    }
+
+    if (args.length === 6 && forcePoundSign === true) {
+        args = `#${args}`
     }
 
     // is not enough with color.isValidColor
@@ -228,6 +234,7 @@
     a = args.a != null ? args.a : _rgba.a;
     hex = format === "hex" ? args : _hex;
 
+    hex = upcaseOutput ? hex.toUpperCase() : hex
     dispatch && dispatchInput(hex);
   }
 
