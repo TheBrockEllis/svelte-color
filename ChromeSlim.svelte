@@ -32,6 +32,7 @@
         flex: none;
         overflow: hidden;
         cursor: pointer;
+        border: 1px solid gray;
     }
 
     .sliders {

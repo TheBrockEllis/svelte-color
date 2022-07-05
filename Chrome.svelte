@@ -26,6 +26,7 @@
     margin: auto 1.25em auto 0.75em;
     flex: none;
     overflow: hidden;
+    border: 1px solid gray;
   }
 
   .sliders{
