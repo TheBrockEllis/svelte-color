@@ -184,7 +184,6 @@
   $: color = {r, g, b, h, s, l, v, a, hex};
 
   export let startColor = "#ff0000"; // all tinycolor colors
-  export let disableAlpha = false;
   export let upcaseOutput = false
   export let forcePoundSign = false
 
